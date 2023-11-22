@@ -1,0 +1,22 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;200;300;400;500;600;700;800&display=swap');
+
+body{
+    background-color: rgb(248, 240, 255) !important;
+    font-family: 'Playpen Sans', cursive !important;
+    
+}
+input{
+    border-radius: 5px !important;
+}
+.navbar{
+    background-color: rgb(233, 207, 255) !important;
+}
+form{
+    background-color: rgb(242, 231, 253) !important;
+    border-radius: 5px !important;
+}
+.submit{
+    background-color: aqua ;
+    
+}
