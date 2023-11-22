@@ -1,8 +1,9 @@
 import React from "react";
 import Input from "../../pages/Input";
-import { useFormik } from "formik";
+import { useFormik,Formik } from "formik";
 export default function Register() {
   const formik = useFormik({
+   
     initialValues: {
       userName: "",
       email: "",
@@ -24,8 +25,12 @@ export default function Register() {
       }
       return errors;
     },
+    validateOnBlur:true,
+    validateOnChange:false,
+   
     
   });
+  
 
   const inputs = [
     {
@@ -64,6 +69,7 @@ export default function Register() {
       errors={formik.errors}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
+      touched={formik.touched}
     />
   ));
   return (
