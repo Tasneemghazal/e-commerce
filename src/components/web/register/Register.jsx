@@ -1,22 +1,51 @@
 import React from "react";
 import Input from "../../pages/Input";
 import { useFormik, Formik } from "formik";
-import {validationSchema} from '../validation/validate.js'
+import { toast } from "react-toastify";
+import { validationSchema } from "../validation/validate.js";
+import axios from "axios";
 export default function Register() {
   const initialValues = {
     userName: "",
     email: "",
     password: "",
-    image:"",
+    image: "",
   };
-  const onSubmit = (values) => {
-    console.log(values);
+  const handleFieldChange = (event) => {
+    console.log(event);
+    formik.setFieldValue("image", event.target.files[0]);
+  };
+  const onSubmit = async (users) => {
+    const formData = new FormData();
+    formData.append("userName", users.userName);
+    formData.append("email", users.email);
+    formData.append("password", users.password);
+    formData.append("image", users.image);
+
+    const { data } = await axios.post(
+      "https://ecommerce-node4.vercel.app/auth/signup",
+      formData
+    );
+    if (data.message == "success") {
+      formik.resetForm();
+      toast.success( "Account created successfully, please verify your email", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    }
+    console.log(data);
   };
 
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validationSchema:validationSchema,
+    validationSchema: validationSchema,
     validateOnBlur: true,
     validateOnChange: false,
   });
@@ -48,7 +77,7 @@ export default function Register() {
       type: "file",
       name: "image",
       title: "User Image",
-      value: formik.values.image,
+      onChange: handleFieldChange,
     },
   ];
   const renderInputs = inputs.map((input, index) => (
@@ -60,7 +89,7 @@ export default function Register() {
       value={input.value}
       key={index}
       errors={formik.errors}
-      onChange={formik.handleChange}
+      onChange={input.onChange || formik.handleChange}
       onBlur={formik.handleBlur}
       touched={formik.touched}
     />
@@ -69,10 +98,18 @@ export default function Register() {
     <>
       <div className="container m-auto w-50">
         <h2 className=" text-center">Create Account</h2>
-        <form onSubmit={formik.handleSubmit} className="p-4">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="p-4"
+          encType="multipart/form-data"
+        >
           {renderInputs}
           <div className="input-group my-4 d-block m-auto w-50 ">
-            <input type="submit" className="submit text-white" disabled={!formik.isValid}/>
+            <input
+              type="submit"
+              className="submit text-white"
+              disabled={!formik.isValid}
+            />
           </div>
         </form>
       </div>
