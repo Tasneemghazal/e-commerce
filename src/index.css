@@ -17,6 +17,8 @@ form{
     border-radius: 5px !important;
 }
 .submit{
-    background-color: aqua ;
+    background-color: rgb(209, 108, 245) ;
+    border: none;
+    padding: 5px 8px;
     
 }
