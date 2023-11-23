@@ -7,6 +7,7 @@ export default function Register() {
     userName: "",
     email: "",
     password: "",
+    image:"",
   };
   const onSubmit = (values) => {
     console.log(values);
@@ -42,6 +43,13 @@ export default function Register() {
       title: "User Password",
       value: formik.values.password,
     },
+    {
+      id: "image",
+      type: "file",
+      name: "image",
+      title: "User Image",
+      value: formik.values.image,
+    },
   ];
   const renderInputs = inputs.map((input, index) => (
     <Input
@@ -64,7 +72,7 @@ export default function Register() {
         <form onSubmit={formik.handleSubmit} className="p-4">
           {renderInputs}
           <div className="input-group my-4 d-block m-auto w-50 ">
-            <input type="submit" className="submit text-white" />
+            <input type="submit" className="submit text-white" disabled={!formik.isValid}/>
           </div>
         </form>
       </div>
