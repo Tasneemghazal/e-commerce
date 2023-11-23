@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "../../pages/Input";
 import { useFormik, Formik } from "formik";
-import {validate} from '../validation/validate.js'
+import {validationSchema} from '../validation/validate.js'
 export default function Register() {
   const initialValues = {
     userName: "",
@@ -15,7 +15,7 @@ export default function Register() {
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validate,
+    validationSchema:validationSchema,
     validateOnBlur: true,
     validateOnChange: false,
   });
