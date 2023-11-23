@@ -1,36 +1,24 @@
 import React from "react";
 import Input from "../../pages/Input";
-import { useFormik,Formik } from "formik";
+import { useFormik, Formik } from "formik";
+import {validate} from '../validation/validate.js'
 export default function Register() {
+  const initialValues = {
+    userName: "",
+    email: "",
+    password: "",
+  };
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+
   const formik = useFormik({
-   
-    initialValues: {
-      userName: "",
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
-    },
-    validate: (values) => {
-      let errors = {};
-      if (!values.userName) {
-        errors.userName = "name is required";
-      }
-      if (!values.email) {
-        errors.email = "email is required";
-      }
-      if(!values.password) {
-        errors.password = "password is required";
-      }
-      return errors;
-    },
-    validateOnBlur:true,
-    validateOnChange:false,
-   
-    
+    initialValues,
+    onSubmit,
+    validate,
+    validateOnBlur: true,
+    validateOnChange: false,
   });
-  
 
   const inputs = [
     {
@@ -39,7 +27,6 @@ export default function Register() {
       name: "userName",
       title: "User Name",
       value: formik.values.userName,
-      
     },
     {
       id: "email",
@@ -47,7 +34,6 @@ export default function Register() {
       name: "email",
       title: "User Email",
       value: formik.values.email,
-   
     },
     {
       id: "password",
@@ -55,7 +41,6 @@ export default function Register() {
       name: "password",
       title: "User Password",
       value: formik.values.password,
-    
     },
   ];
   const renderInputs = inputs.map((input, index) => (
@@ -78,10 +63,9 @@ export default function Register() {
         <h2 className=" text-center">Create Account</h2>
         <form onSubmit={formik.handleSubmit} className="p-4">
           {renderInputs}
-          <div className='input-group my-4 d-block m-auto w-50 '>
-          <input type="submit" className="submit"/>
+          <div className="input-group my-4 d-block m-auto w-50 ">
+            <input type="submit" className="submit text-white" />
           </div>
-          
         </form>
       </div>
     </>
