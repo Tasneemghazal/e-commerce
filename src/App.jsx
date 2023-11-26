@@ -1,6 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import { RouterProvider } from "react-router-dom";
-import {router} from './layout/routes.jsx'
+import { createBrowserRouter } from "react-router-dom";
+import Layout from "./layout/Layout.jsx";
+import Home from "./components/web/home/Home.jsx";
+import Categories from "./components/web/categories/Categories.jsx";
+import DashboardLayout from "./layout/DashboardLayout.jsx";
+import HomeDashboard from "./components/dashboard/home/Home.jsx";
+import CategoriesDashboard from "./components/dashboard/categories/Categories.jsx";
+import Register from "./components/web/register/Register.jsx";
+import Login from "./components/web/login/Login.jsx";
+import {jwtDecode} from "jwt-decode";
+
 export default function App() {
+  const [user,setUser]=useState(null);
+  const saveCurrentUser = ()=>{
+    const token = localStorage.getItem('userToken');
+    const decode = jwtDecode(token);
+    setUser(decode);
+  }
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout user={user}/>,
+  
+      children: [
+        {
+          path: "home",
+          element: <Home />,
+        },
+        {
+          path: "register",
+          element: <Register />,
+        },
+        {
+          path: "login",
+          element: <Login saveCurrentUser={saveCurrentUser}/>,
+        },
+        {
+          path: "category",
+          element: <Categories />,
+        },
+        {
+          path: "*",
+          element: <h2>Page not Found web</h2>,
+        },
+      ],
+    },
+    {
+      path: "/dashboard",
+      element: <DashboardLayout />,
+  
+      children: [
+        {
+          path: "home",
+          element: <HomeDashboard />,
+        },
+        {
+          path: "category",
+          element: <CategoriesDashboard />,
+        },
+        {
+          path: "*",
+          element: <h2>Page not Found dash</h2>,
+        },
+      ],
+    },
+  ]);
   return <RouterProvider router={router} />;
 }

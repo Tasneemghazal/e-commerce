@@ -6,23 +6,23 @@ import { loginSchema } from "../validation/validate.js";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
-    const navigate = useNavigate();
+export default function Login({ saveCurrentUser }) {
+  const navigate = useNavigate();
   const initialValues = {
     email: "",
     password: "",
   };
-const onSubmit = async (users) => {
-    
+  const onSubmit = async (users) => {
     const { data } = await axios.post(
       "https://ecommerce-node4.vercel.app/auth/signin",
       users
     );
     console.log(data);
     if (data.message == "success") {
-      localStorage.setItem("userToken",data.token);
-      toast.success( "login successfully", {
-        position:"top-right",
+      localStorage.setItem("userToken", data.token);
+      saveCurrentUser();
+      toast.success("login successfully", {
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -30,10 +30,10 @@ const onSubmit = async (users) => {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        });
-        navigate('/home');
+      });
+      navigate("/home");
+    }
   };
-}
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -43,7 +43,6 @@ const onSubmit = async (users) => {
   });
 
   const inputs = [
-  
     {
       id: "email",
       type: "email",
@@ -58,7 +57,6 @@ const onSubmit = async (users) => {
       title: "User Password",
       value: formik.values.password,
     },
-  
   ];
   const renderInputs = inputs.map((input, index) => (
     <Input
@@ -97,5 +95,3 @@ const onSubmit = async (users) => {
     </>
   );
 }
-
-
