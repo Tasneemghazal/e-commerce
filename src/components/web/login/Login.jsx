@@ -4,7 +4,10 @@ import { useFormik, Formik } from "formik";
 import { toast } from "react-toastify";
 import { loginSchema } from "../validation/validate.js";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+    const navigate = useNavigate();
   const initialValues = {
     email: "",
     password: "",
@@ -18,6 +21,17 @@ const onSubmit = async (users) => {
     console.log(data);
     if (data.message == "success") {
       localStorage.setItem("userToken",data.token);
+      toast.success( "login successfully", {
+        position:"top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+        navigate('/home');
   };
 }
   const formik = useFormik({
