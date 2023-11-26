@@ -36,7 +36,7 @@ export default function Navbar() {
         <ul className="dropdown-menu ">
           <li><Link to='/register' className="dropdown-item" >register</Link></li>
           <li><hr className="dropdown-divider" /></li>
-          <li><a className="dropdown-item" href="#"> <CiLogin/> login</a></li>
+          <li><Link to='/login' className="dropdown-item" > <CiLogin/> login</Link></li>
         </ul>
       </li>
         </ul>
