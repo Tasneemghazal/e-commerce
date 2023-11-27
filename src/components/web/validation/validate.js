@@ -12,4 +12,11 @@ export const validationSchema = yup.object({
     .min(6, "password must be at least 6 characters")
     .max(16, "password musn't exceed 16 characters"),
 });
-
+export const loginSchema = yup.object({
+  email: yup.string().email().required("email is Required "),
+  password: yup
+    .string()
+    .required("password is Required ")
+    .min(6, "password must be at least 6 characters")
+    .max(16, "password musn't exceed 16 characters"),
+});
