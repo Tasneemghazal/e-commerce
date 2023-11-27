@@ -1,10 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Register from '../register/Register'
 import {FaOpencart  } from "react-icons/fa6";
 import { CiLogin } from "react-icons/ci";
-export default function Navbar({user}) {
-  console.log(user);
+export default function Navbar({user,setUser}) {
+  const navigate = useNavigate();
+  const logOut=()=>{
+    localStorage.removeItem('userToken');
+    setUser(null);
+    navigate('/home');
+  }
   return (
     <nav className="navbar navbar-expand-lg mb-5  ">
       <div className="container">
@@ -42,10 +47,11 @@ export default function Navbar({user}) {
             <li><Link to='/register' className="dropdown-item" >register</Link></li>
           <li><hr className="dropdown-divider" /></li>
           <li><Link to='/login' className="dropdown-item" > <CiLogin/> login</Link></li>
-          </>:<>
+          </>:
+          <>
           <li><Link to='/register' className="dropdown-item" >Profile</Link></li>
           <li><hr className="dropdown-divider" /></li>
-          <li><Link to='/login' className="dropdown-item" > <CiLogin/> Logout</Link></li>
+          <li><Link onClick={logOut} className="dropdown-item" > <CiLogin/> Logout</Link></li>
           </>
           }
           
