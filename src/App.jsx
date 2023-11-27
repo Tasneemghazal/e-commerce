@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./layout/Layout.jsx";
@@ -12,16 +12,22 @@ import Login from "./components/web/login/Login.jsx";
 import {jwtDecode} from "jwt-decode";
 
 export default function App() {
+  
   const [user,setUser]=useState(null);
   const saveCurrentUser = ()=>{
     const token = localStorage.getItem('userToken');
     const decode = jwtDecode(token);
     setUser(decode);
   }
+  useEffect(()=>{
+    if(localStorage.getItem('userToken')){
+      saveCurrentUser();
+    }
+  },[]);
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout user={user}/>,
+      element: <Layout user={user} setUser={setUser}/>,
   
       children: [
         {
