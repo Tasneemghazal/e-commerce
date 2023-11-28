@@ -30,11 +30,7 @@ export default function App() {
       element: <Layout user={user} setUser={setUser}/>,
   
       children: [
-        {
-          path: "home",
-          element: <Home />,
-        },
-        {
+       {
           path: "register",
           element: <Register />,
         },
@@ -46,6 +42,11 @@ export default function App() {
           path: "category",
           element: <Categories />,
         },
+        {
+          path:"/",
+          element: <Home />,
+        },
+        
         {
           path: "*",
           element: <h2>Page not Found web</h2>,
