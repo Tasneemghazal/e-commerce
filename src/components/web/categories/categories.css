@@ -1,0 +1,17 @@
+img{
+    width: 100px;
+   height: 100px;
+}
+h2{
+    font-size: 18px !important;
+    color: #a600ff !important;
+}
+.swiper{
+    padding: 50px;
+}
+.swiper-custom-pagination{
+    text-align: center;
+}
+.swiper-pagination-bullet{
+   --swiper-theme-color:#a600ff;
+}
