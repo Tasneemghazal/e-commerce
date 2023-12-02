@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import {TailSpin}  from "react-loading-icons";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
 export default function Categories() {
   const getCategories =  async() =>{
     const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/categories`);
