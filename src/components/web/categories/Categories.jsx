@@ -3,6 +3,11 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import {TailSpin}  from "react-loading-icons";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination,Autoplay} from 'swiper/modules';
+import 'swiper/css';
+import './categories.css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 export default function Categories() {
   const getCategories =  async() =>{
     const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/categories`);
@@ -25,16 +30,29 @@ export default function Categories() {
   }
   return (
     <div className="container">
-      <div className="row">
-       
-          {data?.categories.length? data?.categories.map((category)=>
-           <div className="col-md-3" key={category._id}>
-          <img src={category.image.secure_url} alt="" className="w-50" />
-          <h2>{category.name}</h2>
-          </div>
+      <div className="swiper-custom-pagination"></div>
+    <Swiper
+       modules={[Navigation, Pagination,Autoplay]}
+      spaceBetween={30}
+      slidesPerView={6.5}
+      navigation
+      pagination={{ clickable: true,
+        el:'.swiper-custom-pagination'
+       }}
+      loop={true}
+      autoplay={{
+        delay:1000
+      }
+      }
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      {data?.categories.length? data?.categories.map((category)=>
+          <SwiperSlide key={category._id}><img src={category.image.secure_url} alt="" className="rounded-circle"/>
+          <h2>{category.name}</h2></SwiperSlide>
           ):<h1>no category found</h1>}
-        </div>
-     
+      
+    </Swiper>
     </div>
   );
 
