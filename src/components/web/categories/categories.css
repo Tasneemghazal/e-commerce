@@ -6,6 +6,11 @@ h2{
     font-size: 18px !important;
     color: #a600ff !important;
 }
+.category{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .swiper{
     padding: 50px;
 }
@@ -13,5 +18,16 @@ h2{
     text-align: center;
 }
 .swiper-pagination-bullet{
-   --swiper-theme-color:#a600ff;
+   background-color: #a600ff !important;
+}
+.swiper-button-prev,.swiper-button-next{
+    background-color:#f5e3ff;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+}
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after,
+.swiper-button-next:after{
+    font-size: 20px !important;
+    color: #a600ff;
 }
