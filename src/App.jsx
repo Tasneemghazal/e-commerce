@@ -10,6 +10,7 @@ import CategoriesDashboard from "./components/dashboard/categories/Categories.js
 import Register from "./components/web/register/Register.jsx";
 import Login from "./components/web/login/Login.jsx";
 import {jwtDecode} from "jwt-decode";
+import CategoryDetails from "./components/web/categories/CategoryDetails.jsx";
 
 export default function App() {
   
@@ -41,6 +42,10 @@ export default function App() {
         {
           path: "category",
           element: <Categories />,
+        },
+        {
+          path:"products/category/:id",
+          element:<CategoryDetails/>
         },
         {
           path:"/",
