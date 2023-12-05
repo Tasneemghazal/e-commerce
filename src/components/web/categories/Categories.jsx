@@ -39,7 +39,7 @@ export default function Categories() {
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
-        slidesPerView={6.5}
+        slidesPerView={3}
         navigation
         pagination={{ clickable: true, el: ".swiper-custom-pagination" }}
         loop={true}
