@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import ReactImageMagnify from 'react-image-magnify';
 export default function Product() {
   const {id} = useParams();
   console.log(id);
@@ -22,10 +23,27 @@ export default function Product() {
    <div className="row">
     
     <div className="col-md-4">
-       {data.subImages.map((image) =>
-       <div className="images mt-4 text-center">
-        <img src={image.secure_url}/>
-       </div>
+       {data.subImages.map((image,index) =>
+       <React.Fragment key={index}>
+       <ReactImageMagnify className="mt-4 product" {...{
+        smallImage: {
+            alt: 'Wristwatch by Ted Baker London',
+            isFluidWidth: true,
+            src: image.secure_url
+        },
+        largeImage: {
+            src: image.secure_url, 
+            width:1200,
+            height: 1800
+        },
+        enlargedImageContainerDimensions:{
+          width:200,
+          height:200
+        },
+        enlargedImagePosition:'over',
+        isHintEnabled: true
+    }} />
+    </React.Fragment>
        )}
         
     </div>
