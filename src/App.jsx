@@ -11,6 +11,7 @@ import Register from "./components/web/register/Register.jsx";
 import Login from "./components/web/login/Login.jsx";
 import {jwtDecode} from "jwt-decode";
 import CategoryDetails from "./components/web/categories/CategoryDetails.jsx";
+import Product from "./components/web/products/Product.jsx";
 
 export default function App() {
   
@@ -46,6 +47,10 @@ export default function App() {
         {
           path:"products/category/:id",
           element:<CategoryDetails/>
+        },
+        {
+          path:"products/:id",
+          element:<Product/>
         },
         {
           path:"/",
