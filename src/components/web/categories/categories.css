@@ -31,3 +31,7 @@ h2{
     font-size: 20px !important;
     color: #a600ff;
 }
+.product{
+    border: 1px solid #a600ff;
+    border-radius: 5px;
+}
