@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { TailSpin } from "react-loading-icons";
@@ -9,6 +9,7 @@ import "./categories.css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
+
 export default function Categories() {
   const getCategories = async () => {
     const { data } = await axios.get(
@@ -16,6 +17,7 @@ export default function Categories() {
     );
     return data;
   };
+
   const { data, isLoading } = useQuery("web_categories", getCategories);
   if (isLoading) {
     return (
@@ -68,6 +70,7 @@ export default function Categories() {
           <h1>no category found</h1>
         )}
       </Swiper>
+   
     </div>
   );
 }
