@@ -1,0 +1,301 @@
+.cart{
+    padding:20px 0 60px 0;
+
+
+}
+
+
+.cart-items{
+    display: flex;
+    padding:40px 0;
+
+
+}
+.cart-header{
+    display: flex;
+    justify-content: space-around;
+    gap:50px;
+    flex-wrap: nowrap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #6C7275;
+    overflow-x: auto;
+}
+
+
+.cart-header .first-row{
+    flex-grow: 1;
+}
+.item h2{
+    font-size:16px;
+    font-weight: 900;
+}
+.products{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    overflow-x: auto;
+
+
+}
+.products .item{
+    display: flex;
+    align-items: center;
+    gap: 41px;
+}
+.products .product-info{
+    flex-grow: 1;
+    display: flex;
+    gap:16px;
+    min-width: 240px;
+}
+
+
+
+
+.product-item {
+    display: flex;
+    gap:50px;
+    justify-content: space-between;
+}
+ .product-info img {
+    width:15%;
+}
+
+
+ .product-details {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+.product-details h2{
+    font-size:15px;
+}
+
+
+.product-details span{
+    color:#6C7275;
+}
+.product-details a{
+    display: flex;
+    gap:10px;
+    text-decoration: none;
+    color:#6C7275;
+}
+.products .quantity{
+    width:120px;
+        min-width: 120px;
+font-size:20px;
+}
+
+
+.products .price {
+    width:120px;
+        min-width: 120px;
+
+
+}
+
+
+.products .subtotal{
+    width:120px;
+    min-width: 120px;
+}
+.products button{
+    background-color: #fff;
+    border:0;
+}
+.products input{
+    border:0;
+    width:10%;
+}
+
+
+.cart-summary{
+    padding:24px;
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    border-radius: 6px;
+    border: 1px solid #6C7275;
+    background-color: #fff;
+    width:500px;
+    margin-top: 47px;
+
+
+}
+.summery-items {
+    display: flex;
+    flex-direction: column;
+    gap:16px;
+    padding: 24px;
+}
+.summary-item,.summary-footer{
+    display: flex;
+    justify-content: space-between;
+
+
+}
+.summary-item  {
+    border: 1px solid #6C7275;
+    padding: 13px;
+    border-radius: 6px;
+
+
+}
+.form-group{
+    display: flex;
+    gap:10px;
+}
+.summary-footer span{
+    font-weight: 700;
+}
+.summary-footer .total {
+    font-weight: 700;
+}
+
+
+ .checkout a{
+    background-color: #141718;
+    width:100%;
+    display: flex;
+    color:#fff;
+    text-decoration: none;
+    justify-content: center;
+    padding: 10px 26px;
+    border-radius: 8px;
+}
+
+
+.cart .row:last-of-type{
+    flex-direction: column;
+    align-items: flex-start;
+    gap:10px;
+}
+
+
+.cart p:last-of-type{
+    color:#6C7275;
+}
+
+
+.coupon-form{
+    position: relative;
+}
+
+
+.coupon-form input{
+    width:100%;
+    padding: 15px 170px 15px 60px;
+    border: 1px solid var(--neutral-04100, #6C7275);
+
+
+
+
+}
+
+
+.coupon-form svg{
+    position:absolute;
+    top:16%;
+    left:20px;
+    z-index:1;
+
+
+
+
+}
+
+
+.coupon-form button{
+    position:absolute;
+    top:23%;
+    right:20px;
+    background-color: transparent;
+    border:0;
+    cursor: pointer;
+
+
+}
+
+
+footer{
+    background-color: #141718;
+    color:#fff;
+    padding: 80px 0 32px 0;
+
+
+}
+
+
+footer .container:first-child {
+    padding-bottom: 50px;;
+}
+footer .logo{
+    display: flex;
+    align-items: center;
+    gap:30px;
+}
+footer .logo a {
+    color:#fff;
+    text-decoration: none;
+    border-right:2px solid #6C7275;
+    padding-right:30px;
+    font-size: 24px;
+    font-family: Poppins;
+}
+.list{
+    background-color: transparent;
+    border:0;
+    display: flex;
+    gap:20px;
+}
+.list a {
+    color:#fff;
+    text-decoration: none;
+}
+
+
+.second-footer{
+    padding:20px 0 ;
+}
+
+
+
+
+
+
+@media screen and (max-width:1160px){
+    .cart-items,.cart-summary{
+      width:100%;
+    }
+
+
+}
+
+
+@media screen and (max-width:900px){
+    .container{
+        width:calc(100% - 100px)
+    }
+}
+
+
+@media screen and (max-width:700px){
+
+
+    .container{
+        width:calc(100% - 30px)
+    }
+    .summary-item,.summary-footer{
+       flex-direction: column;
+       gap:20px;
+       font-size:12px;
+       width:100%;
+       padding:5px;
+    }
+
+
+}
