@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export default function Categories() {
   const getCategories = async () => {
     const { data } = await axios.get(
-      `${import.meta.env.VITE_API_URL}/categories`
+      `${import.meta.env.VITE_API_URL}/categories/active?limit=5`
     );
     return data;
   };
