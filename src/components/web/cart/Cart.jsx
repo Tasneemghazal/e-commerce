@@ -3,11 +3,15 @@ import'./cart.css'
 import { CartContext } from '../context/Cart'
 import {  useQuery } from 'react-query';
 export default function Cart() {
-    const {getCartContext} = useContext(CartContext);
+    const {getCartContext,removeItemContext} = useContext(CartContext);
     const getCart = async ()=>{
         const res = await getCartContext();
         return res;
     }
+    const removeItem = async (productId)=>{
+        const res = await removeItemContext(productId);
+        return res;
+    };
     const {data,isLoading}=useQuery("cart",getCart);
     console.log(data);
     if(isLoading){
@@ -41,7 +45,7 @@ export default function Cart() {
                 <div className="product-details">
                   <h2>{product.details.name}</h2>
                   <span>Color:black</span>
-                  <a href="#">
+                  <a href="#" onClick={()=>removeItem(product.details._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width={24}
@@ -78,7 +82,7 @@ export default function Cart() {
                     />
                   </svg>
                 </button>
-                <span>1</span>
+                <span>{product.quantity}</span>
                 <button>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +101,7 @@ export default function Cart() {
                 </button>
               </div>
               <div className="price">{product.details.price}</div>
-              <div className="subtotal">$38.00</div>
+              <div className="subtotal">${product.quantity * product.details.price}</div>
             </div>):(<h2>cart is empty</h2>)}
           
             
