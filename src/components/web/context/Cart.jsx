@@ -38,9 +38,18 @@ const getCartContext = async()=>{
     console.log(err);
   }
 };
-
+const removeItemContext = async(productId)=>{
+  try{
+  const token = localStorage.getItem("userToken");
+  const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/cart`,{productId},{headers:{Authorization:`Tariq__${token}`}});
+  return data;
+  }
+  catch(err){
+    console.log(err);
+  }
+};
   return (
-    <CartContext.Provider value={{addToCartContext,getCartContext}}>
+    <CartContext.Provider value={{addToCartContext,getCartContext,removeItemContext}}>
       {children}
     </CartContext.Provider>
   );
