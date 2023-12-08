@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext} from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 export const CartContext = createContext(null);
@@ -43,10 +43,23 @@ export function CartContextProvider({ children }) {
     try {
       const token = localStorage.getItem("userToken");
       const { data } = await axios.patch(
-        `${import.meta.env.VITE_API_URL}/cart`,
+        `${import.meta.env.VITE_API_URL}/cart/removeItem`,
         { productId },
         { headers: { Authorization: `Tariq__${token}` } }
       );
+      if (data.message == "success") {
+        toast.success("product removed successfully", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+     
       return data;
     } catch (err) {
       console.log(err);
