@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import'./cart.css'
 import { CartContext } from '../context/Cart'
 import {  useQuery } from 'react-query';
@@ -13,7 +13,7 @@ export default function Cart() {
         return res;
     };
     const {data,isLoading}=useQuery("cart",getCart);
-    console.log(data);
+   
     if(isLoading){
     <h2>is Loading ...</h2>
     }
