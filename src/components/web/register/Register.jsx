@@ -12,7 +12,6 @@ export default function Register() {
     image: "",
   };
   const handleFieldChange = (event) => {
-    console.log(event);
     formik.setFieldValue("image", event.target.files[0]);
   };
   const onSubmit = async (users) => {
@@ -39,7 +38,7 @@ export default function Register() {
         theme: "dark",
         });
     }
-    console.log(data);
+  
   };
 
   const formik = useFormik({
