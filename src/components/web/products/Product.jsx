@@ -19,7 +19,6 @@ export default function Product() {
   const { data, isLoading } = useQuery("product", getProduct);
   const addToCart = async(id) => {
     const res = await addToCartContext(id);
-    console.log(res);
   };
   if (isLoading) {
     return <h2>isLoading...</h2>;
