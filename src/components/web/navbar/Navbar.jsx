@@ -1,14 +1,28 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import Register from '../register/Register'
+import React,{useContext} from 'react'
+import { Link, useNavigate} from 'react-router-dom'
 import {FaOpencart  } from "react-icons/fa6";
 import { CiLogin } from "react-icons/ci";
-export default function Navbar({user,setUser}) {
-  const navigate = useNavigate();
+import{CartContext} from '../context/Cart.jsx'
+import { useQuery } from 'react-query';
+import { UserContext } from '../context/User.jsx';
+export default function Navbar() {
+  let{userToken,setUserToken,userData,setUserData}=useContext(UserContext);
+
+  let navigate =useNavigate();
+  const {getCartContext} = useContext(CartContext);
+  const getCart = async ()=>{
+        const res = await getCartContext();
+        return res;
+  }
+  const {data}=useQuery("cart",getCart);
+ 
+ ;
   const logOut=()=>{
+    console.log('test');
     localStorage.removeItem('userToken');
-    setUser(null);
-    navigate('/home');
+    setUserToken(null);
+    setUserData(null);
+    navigate('/');
   }
   return (
     <nav className="navbar navbar-expand-lg mb-5  ">
@@ -31,29 +45,35 @@ export default function Navbar({user,setUser}) {
           <li className="nav-item">
           <a className="nav-link" href="#">Products</a>
         </li>
-        {user&&<li className="nav-item">
-          <Link className="nav-link" to="/cart">Cart</Link>
-        </li>}
+        {userToken?
+        <li className="nav-item">
+          <Link className="nav-link" to="/cart">Cart <span className='bg-info'>{data?.count?data.count:<h2></h2>}</span></Link>
+        </li>:null}
         
         
         </ul>
         <ul className="navbar-nav">
         <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Accounts
+          {userData?userData.userName:'Accounts'}
         </a>
         <ul className="dropdown-menu ">
-          {!user?<>
-            <li><Link to='/register' className="dropdown-item" >register</Link></li>
+          {userToken == null ?
+          <>
+          <li><Link to='/register' className="dropdown-item" >register</Link></li>
           <li><hr className="dropdown-divider" /></li>
           <li><Link to='/login' className="dropdown-item" > <CiLogin/> login</Link></li>
-          </>:
-          <>
-          <li><Link to='/register' className="dropdown-item" >Profile</Link></li>
+          </>
+          :<>
+          <li><Link to='/profile' className="dropdown-item" >Profile</Link></li>
           <li><hr className="dropdown-divider" /></li>
           <li><Link onClick={logOut} className="dropdown-item" > <CiLogin/> Logout</Link></li>
-          </>
-          }
+          </>}
+          
+         
+          
+          
+          
           
         </ul>
       </li>
