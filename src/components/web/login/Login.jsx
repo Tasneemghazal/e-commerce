@@ -4,7 +4,7 @@ import { useFormik, Formik } from "formik";
 import { toast } from "react-toastify";
 import { loginSchema } from "../validation/validate.js";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/User.jsx";
 
 export default function Login() {
@@ -95,6 +95,7 @@ export default function Login() {
               disabled={!formik.isValid}
               value="Login"
             />
+            <Link to='/sendCode' className="text-decoration-none ms-4 forgetpassword text-white">Forget Password</Link>
           </div>
         </form>
       </div>
