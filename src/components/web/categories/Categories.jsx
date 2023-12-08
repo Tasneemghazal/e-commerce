@@ -48,8 +48,8 @@ export default function Categories() {
         autoplay={{
           delay: 1000,
         }}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+      //  onSlideChange={() => console.log("slide change")}
+      //  onSwiper={(swiper) => console.log(swiper)}
       >
         {data?.categories.length ? (
           data?.categories.map((category) => (
