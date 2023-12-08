@@ -18,7 +18,6 @@ export default function Navbar() {
  
  ;
   const logOut=()=>{
-    console.log('test');
     localStorage.removeItem('userToken');
     setUserToken(null);
     setUserData(null);
@@ -54,7 +53,7 @@ export default function Navbar() {
         </ul>
         <ul className="navbar-nav">
         <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a className="nav-link dropdown-toggle text-capitalize" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           {userData?userData.userName:'Accounts'}
         </a>
         <ul className="dropdown-menu ">
