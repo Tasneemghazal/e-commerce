@@ -6,7 +6,7 @@ body{
     font-family: 'Playpen Sans', cursive !important;
     
 }
-input{
+input,.forgetpassword{
     border-radius: 5px !important;
 }
 .navbar{
@@ -16,9 +16,15 @@ form{
     background-color: rgb(242, 231, 253) !important;
     border-radius: 5px !important;
 }
-.submit{
+.submit,.forgetpassword{
     background-color: rgb(209, 108, 245) ;
     border: none;
     padding: 5px 8px;
     
+}
+a{
+    display: inline-block;
+}
+h1{
+    color: blueviolet !important;
 }
