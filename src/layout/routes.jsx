@@ -12,6 +12,8 @@ import Cart from "../components/web/cart/Cart.jsx";
 import Product from "../components/web/products/Product.jsx";
 import ProtectedRoutes from "../components/web/protectedRoutes/ProtectedRoutes.jsx";
 import Profile from "../components/web/profile/Profile.jsx";
+import SendCode from "../components/web/sendCode/SendCode.jsx";
+import ForgetPassword from "../components/web/forgetPassword/ForgetPassword.jsx";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -53,10 +55,18 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      {
+        path:"sendCode",
+        element:<SendCode/>
+      },
+      {
+        path:"forgetpassword",
+        element:<ForgetPassword/>
+      },
 
       {
         path: "*",
-        element: <h2>Page not Found web</h2>,
+        element: <h1 className="text-center">Tasneem Shop</h1>,
       },
     ],
   },
