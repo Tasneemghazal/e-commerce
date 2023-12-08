@@ -1,34 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import Input from "../../pages/Input";
 import { useFormik, Formik } from "formik";
 import { toast } from "react-toastify";
-import { validationSchema } from "../validation/validate.js";
+import { forgetPassword } from "../validation/validate.js";
 import axios from "axios";
-export default function Register() {
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/User.jsx";
+
+export default function ForgetPassword() {
+  let navigate = useNavigate();
+  let { userToken, setUserToken } = useContext(UserContext);
+
   const initialValues = {
-    userName: "",
     email: "",
     password: "",
-    image: "",
-  };
-  const handleFieldChange = (event) => {
-    formik.setFieldValue("image", event.target.files[0]);
+    code: "",
   };
   const onSubmit = async (users) => {
-    const formData = new FormData();
-    formData.append("userName", users.userName);
-    formData.append("email", users.email);
-    formData.append("password", users.password);
-    formData.append("image", users.image);
-
-    const { data } = await axios.post(
-      "https://ecommerce-node4.vercel.app/auth/signup",
-      formData
+    const { data } = await axios.patch(
+      "https://ecommerce-node4.vercel.app/auth/forgotPassword",
+      users
     );
+        console.log(data);
     if (data.message == "success") {
-      formik.resetForm();
-      toast.success( "Account created successfully, please verify your email", {
-        position: "bottom-center",
+      localStorage.setItem("userToken", data.token);
+      setUserToken(data.token);
+      toast.success("password updated successfully", {
+        position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -36,27 +34,19 @@ export default function Register() {
         draggable: true,
         progress: undefined,
         theme: "dark",
-        });
+      });
+      navigate("/home");
     }
-  
   };
-
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validationSchema: validationSchema,
+    validationSchema: forgetPassword,
     validateOnBlur: true,
     validateOnChange: false,
   });
 
   const inputs = [
-    {
-      id: "username",
-      type: "text",
-      name: "userName",
-      title: "User Name",
-      value: formik.values.userName,
-    },
     {
       id: "email",
       type: "email",
@@ -72,12 +62,12 @@ export default function Register() {
       value: formik.values.password,
     },
     {
-      id: "image",
-      type: "file",
-      name: "image",
-      title: "User Image",
-      onChange: handleFieldChange,
-    },
+        id: "code",
+        type: "text",
+        name: "code",
+        title: "Code",
+        value: formik.values.code,
+      },
   ];
   const renderInputs = inputs.map((input, index) => (
     <Input
@@ -88,7 +78,7 @@ export default function Register() {
       value={input.value}
       key={index}
       errors={formik.errors}
-      onChange={input.onChange || formik.handleChange}
+      onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       touched={formik.touched}
     />
@@ -96,7 +86,7 @@ export default function Register() {
   return (
     <>
       <div className="container m-auto w-50">
-        <h2 className=" text-center">Create Account</h2>
+        <h2 className=" text-center">Forget Password</h2>
         <form
           onSubmit={formik.handleSubmit}
           className="p-4"
@@ -107,7 +97,7 @@ export default function Register() {
             <input
               type="submit"
               className="submit text-white"
-              disabled={!formik.isValid}
+              value="Save Changes"
             />
           </div>
         </form>
@@ -115,3 +105,4 @@ export default function Register() {
     </>
   );
 }
+

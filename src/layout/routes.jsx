@@ -7,7 +7,13 @@ import HomeDashboard from "../components/dashboard/home/Home.jsx";
 import CategoriesDashboard from "../components/dashboard/categories/Categories.jsx";
 import Register from "../components/web/register/Register.jsx";
 import Login from "../components/web/login/Login.jsx";
-
+import CategoryDetails from "../components/web/categories/CategoryDetails.jsx";
+import Cart from "../components/web/cart/Cart.jsx";
+import Product from "../components/web/products/Product.jsx";
+import ProtectedRoutes from "../components/web/protectedRoutes/ProtectedRoutes.jsx";
+import Profile from "../components/web/profile/Profile.jsx";
+import SendCode from "../components/web/sendCode/SendCode.jsx";
+import ForgetPassword from "../components/web/forgetPassword/ForgetPassword.jsx";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -15,24 +21,52 @@ export const router = createBrowserRouter([
 
     children: [
       {
-        path: "home",
-        element: <Home />,
-      },
-      {
         path: "register",
         element: <Register />,
       },
       {
         path: "login",
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "category",
         element: <Categories />,
       },
       {
+        path: "cart",
+        element:
+        <ProtectedRoutes>
+          <Cart/>
+        </ProtectedRoutes> 
+      },
+      {
+        path:"profile",
+        element:<Profile/>
+      },
+      {
+        path: "products/category/:id",
+        element: <CategoryDetails />,
+      },
+      {
+        path: "products/:id",
+        element: <Product/>,
+      },
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path:"sendCode",
+        element:<SendCode/>
+      },
+      {
+        path:"forgetpassword",
+        element:<ForgetPassword/>
+      },
+
+      {
         path: "*",
-        element: <h2>Page not Found web</h2>,
+        element: <h1 className="text-center">Tasneem Shop</h1>,
       },
     ],
   },
