@@ -28,3 +28,17 @@ a{
 h1{
     color: blueviolet !important;
 }
+.image{
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+}
+button{
+    color: blueviolet !important;
+    border-color: blueviolet !important;
+}
+button:hover{
+    background-color:rgb(209, 108, 245)!important;
+    color: white !important;
+    border-color: white !important;
+}
