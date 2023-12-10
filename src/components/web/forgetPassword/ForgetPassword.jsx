@@ -85,7 +85,7 @@ export default function ForgetPassword() {
   ));
   return (
     <>
-      <div className="container m-auto w-50">
+      <div className="container m-auto w-50 pt-5">
         <h2 className=" text-center">Forget Password</h2>
         <form
           onSubmit={formik.handleSubmit}
