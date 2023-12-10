@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import Input from "../../pages/Input";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
-import { loginSchema } from "../validation/validate.js";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { UserContext } from "../context/User.jsx";
-
+import { loginSchema, sendCode } from "../validation/validate.js";
 export default function SendCode() {
   let navigate = useNavigate();
   let { userToken, setUserToken } = useContext(UserContext);
@@ -44,13 +43,14 @@ export default function SendCode() {
   const formik = useFormik({
     initialValues,
     onSubmit,
+    validationSchema:sendCode,
     validateOnBlur: true,
     validateOnChange: false,
   });
 
   return (
     <>
-      <div className="container m-auto w-50">
+      <div className="container m-auto w-50 pt-5">
         <h2 className=" text-center">Send Code</h2>
         <form
           onSubmit={formik.handleSubmit}
