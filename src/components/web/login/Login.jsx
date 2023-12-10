@@ -80,7 +80,7 @@ export default function Login() {
   ));
   return (
     <>
-      <div className="container m-auto w-50">
+      <div className="container m-auto w-50 pt-5">
         <h2 className=" text-center">Login</h2>
         <form
           onSubmit={formik.handleSubmit}
