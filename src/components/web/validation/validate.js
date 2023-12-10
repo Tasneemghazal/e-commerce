@@ -29,3 +29,6 @@ export const forgetPassword = yup.object({
     .max(16, "password musn't exceed 16 characters"),
   code: yup.string().required("code is Required ").min(4, "code must be 4 characters").max(4,"code must be 4 characters")
 });
+export const sendCode = yup.object({
+  email: yup.string().email().required("email is Required "),
+});

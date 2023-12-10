@@ -1,21 +1,24 @@
 import React from 'react'
 import { UserContext } from '../context/User';
 import { useContext } from 'react';
+import style from './profile.module.css'
+import { Link, Outlet } from 'react-router-dom';
 export default function Profile() {
-    const{userData}=useContext(UserContext);
-    console.log(userData)
+    
   return (
+        <aside className={`${style.profile}`}>
+          <div className={`${style.profile_links}`}>
+            <nav>
+              <Link to="">About</Link>
+              <Link to="contact">Contact</Link>
+            </nav>
+          </div>
+          <div className={`${style.userData} pt-4`}>
+            <Outlet/>
+          </div>
+          
 
-    <div className="container">
-      <div className="row m-auto text-center">
-        <div className="col-md-4">
-          <img src={userData?userData.image.secure_url:""}/>
-        </div>
-      <div className="col-md-8">
-        <h1 className='text-capitalize'>{userData?userData.userName:""}</h1>
-        <p>{userData?userData.email:""}</p>
-      </div>
-      </div>
-    </div>
+
+        </aside>
   )
 }
