@@ -3,7 +3,7 @@ import'./cart.css'
 import { CartContext } from '../context/Cart'
 import {  useQuery } from 'react-query';
 export default function Cart() {
-    const {getCartContext,removeItemContext} = useContext(CartContext);
+    const {getCartContext,removeItemContext,clearCartContext} = useContext(CartContext);
     const getCart = async ()=>{
         const res = await getCartContext();
         return res;
@@ -13,10 +13,16 @@ export default function Cart() {
         return res;
     };
     const {data,isLoading}=useQuery("cart",getCart);
-   
+    
+   const clearCart= async ()=>{
+    const res = await clearCartContext();
+    console.log(res);
+    return res;
+   }
     if(isLoading){
     <h2>is Loading ...</h2>
     }
+    
   return (
     <div className="cart">
     <div className="container">
@@ -147,6 +153,7 @@ export default function Cart() {
             </div>
           </div>
         </div>
+        <button className='w-25 my-5 p-3 rounded-2' onClick={clearCart}>Clear Cart</button>
         <div className="row">
           <h2>Have a coupon ?</h2>
           <p>Add your code for an instant cart discount</p>
