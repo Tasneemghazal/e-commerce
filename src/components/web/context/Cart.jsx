@@ -1,4 +1,4 @@
-import { createContext} from "react";
+import { createContext, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 export const CartContext = createContext(null);
@@ -47,7 +47,7 @@ export function CartContextProvider({ children }) {
         { productId },
         { headers: { Authorization: `Tariq__${token}` } }
       );
-      console.log(data)
+      console.log(data);
       if (data.message == "success") {
         toast.success("product removed successfully", {
           position: "top-right",
@@ -60,7 +60,7 @@ export function CartContextProvider({ children }) {
           theme: "dark",
         });
       }
-     
+
       return data;
     } catch (err) {
       console.log(err);
@@ -70,10 +70,11 @@ export function CartContextProvider({ children }) {
     try {
       const token = localStorage.getItem("userToken");
       const { data } = await axios.patch(
-        `${import.meta.env.VITE_API_URL}/cart/clear`,{},
+        `${import.meta.env.VITE_API_URL}/cart/clear`,
+        {},
         { headers: { Authorization: `Tariq__${token}` } }
       );
-      console.log(data)
+      console.log(data);
       if (data.message == "success") {
         toast.success("cart cleared successfully", {
           position: "top-right",
@@ -86,17 +87,51 @@ export function CartContextProvider({ children }) {
           theme: "dark",
         });
       }
-     
+
       return data;
     } catch (err) {
       console.log(err);
     }
   };
-  
-
+  const increaseQuantity = async (productId) => {
+   
+    try{
+      const token = localStorage.getItem("userToken");
+      const { data } = await axios.patch(
+        `${import.meta.env.VITE_API_URL}/cart/incraseQuantity`,
+        { productId },
+        { headers: { Authorization: `Tariq__${token}` } }
+      );
+      console.log(data);
+      return data;
+    }catch(err){
+      console.log(err)
+    }
+  };
+  const decreaseQuantity = async (productId) => {
+    try{
+      const token = localStorage.getItem("userToken");
+      const { data } = await axios.patch(
+        `${import.meta.env.VITE_API_URL}/cart/decraseQuantity`,
+        { productId },
+        { headers: { Authorization: `Tariq__${token}` } }
+      );
+      console.log(data);
+      return data;
+    }catch(err){
+      console.log(err)
+    }
+  }
   return (
     <CartContext.Provider
-      value={{ addToCartContext, getCartContext, removeItemContext, clearCartContext}}
+      value={{
+        addToCartContext,
+        getCartContext,
+        removeItemContext,
+        clearCartContext,
+        increaseQuantity,
+        decreaseQuantity
+      }}
     >
       {children}
     </CartContext.Provider>
