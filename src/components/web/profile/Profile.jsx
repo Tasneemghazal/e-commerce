@@ -11,6 +11,7 @@ export default function Profile() {
             <nav>
               <Link to="">About</Link>
               <Link to="contact">Contact</Link>
+              <Link to="orders">My Orders</Link>
             </nav>
           </div>
           <div className={`${style.userData} pt-4`}>

@@ -13,10 +13,11 @@ export default function App() {
   }
  },[])
   return (
-  
-      <CartContextProvider>
+     
+        <CartContextProvider>
         <RouterProvider router={router} />
       </CartContextProvider>
- 
+     
+      
   );
 }
