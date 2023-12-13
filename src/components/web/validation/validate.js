@@ -32,3 +32,7 @@ export const forgetPassword = yup.object({
 export const sendCode = yup.object({
   email: yup.string().email().required("email is Required "),
 });
+export const createOrder =yup.object({
+  phone:yup.string().required("phone is Required"),
+  address:yup.string().required("address is Required"),
+});
