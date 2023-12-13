@@ -4,7 +4,6 @@ import { CartContextProvider } from "./components/web/context/Cart.jsx";
 import { useContext, useEffect } from "react";
 import { router } from "./layout/routes.jsx";
 import { UserContext } from "./components/web/context/User.jsx";
-import OrderContextProvider from "./components/web/context/Order.jsx";
 
 export default function App() {
   let{userToken,setUserToken} = useContext(UserContext);
