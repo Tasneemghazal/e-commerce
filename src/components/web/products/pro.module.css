@@ -12,4 +12,8 @@
     box-shadow: none !important;
     text-align: center;
 }
+[disabled]:hover{
+background-color: rgb(73, 73, 82) !important;
+cursor: not-allowed;
+}
 
