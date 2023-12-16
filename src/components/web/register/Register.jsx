@@ -95,8 +95,8 @@ export default function Register() {
   ));
   return (
     <>
-      <div className="container m-auto w-50">
-        <h2 className=" text-center">Create Account</h2>
+      <div className="container m-auto ">
+        <h1 className=" text-center py-4">Create Account</h1>
         <form
           onSubmit={formik.handleSubmit}
           className="p-4"

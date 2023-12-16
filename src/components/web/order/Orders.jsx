@@ -13,8 +13,8 @@ export default function Orders() {
     return <h2>loading...</h2>
   }
   return (
-    <div className="row">
-  
+    <div className="container">
+       <div className="row">
       {data?.orders
         ? data.orders.map((order, index) => (
             <div className='col-md-4' key={index}>
@@ -28,6 +28,8 @@ export default function Orders() {
           ))
         : ""}
     </div>
+    </div>
+   
    
   );
 }

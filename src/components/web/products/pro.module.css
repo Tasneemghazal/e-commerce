@@ -1,0 +1,19 @@
+.pro{
+    background-color: rgb(233, 207, 255) !important;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 350px;
+    max-height: 350px;
+
+}
+.pro h2,p{
+    color:#fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-align: center;
+}
+[disabled]:hover{
+background-color: rgb(73, 73, 82) !important;
+cursor: not-allowed;
+}
+
