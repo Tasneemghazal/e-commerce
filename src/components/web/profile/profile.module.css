@@ -4,7 +4,7 @@
     height: 100px;
 }
 .profile_links nav{
-    background-color: rgb(209, 108, 245) ;
+    background-color: rgb(214, 172, 251) ;
     height:calc(100vh - 56px);
     display: flex;
     flex-direction: column;
