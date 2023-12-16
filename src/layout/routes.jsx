@@ -18,6 +18,7 @@ import UserInfo from "../components/web/profile/UserInfo.jsx";
 import UserContact from "../components/web/profile/UserContact.jsx";
 import Orders from "../components/web/order/Orders.jsx";
 import CreateOrder from "../components/web/order/CreateOrder.jsx";
+import Products from "../components/web/products/Products.jsx";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -88,6 +89,10 @@ export const router = createBrowserRouter([
       {
         path:"forgetpassword",
         element:<ForgetPassword/>
+      },
+      {
+        path:"products",
+        element:<Products/>,
       },
 
       {
