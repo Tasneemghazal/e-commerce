@@ -10,8 +10,8 @@ export default function Products() {
     try {
       const { data } = await axios.get(`https://ecommerce-node4.vercel.app/products?page=${page}`);
       console.log(data);
+      console.log(page)
       setpro(data);
-      console.log(pro)
       setIsLoading(false);
     } catch (error) {
       console.log(error)
