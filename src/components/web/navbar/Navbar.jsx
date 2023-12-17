@@ -5,6 +5,7 @@ import { CiLogin } from "react-icons/ci";
 import{CartContext} from '../context/Cart.jsx'
 import { useQuery } from 'react-query';
 import { UserContext } from '../context/User.jsx';
+import logo from '../../../assets/T-store (1).png'
 export default function Navbar() {
   let{userToken,setUserToken,userData,setUserData}=useContext(UserContext);
 
@@ -24,9 +25,10 @@ export default function Navbar() {
     navigate('/');
   }
   return (
-    <nav className="navbar navbar-expand-lg ">
+    <nav className="navbar navbar-expand-lg">
       <div className="container">
-      <a className="navbar-brand" href="#"> <FaOpencart/> T-shop</a>
+      <a className="navbar-brand" href="#"> <FaOpencart/> T-shop
+      </a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon" />
       </button>
@@ -38,7 +40,7 @@ export default function Navbar() {
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="#">Categories</a>
+            <Link className="nav-link" to="/category">Categories</Link>
           </li>
           
           <li className="nav-item">
