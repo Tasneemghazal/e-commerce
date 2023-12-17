@@ -37,7 +37,7 @@ export default function Categories() {
   }
   return (
     <div className="container">
-      <div className="swiper-custom-pagination"></div>
+      <div className="swiper-custom-pagination py-5"></div>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={30}
