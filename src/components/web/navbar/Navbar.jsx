@@ -5,7 +5,6 @@ import { CiLogin } from "react-icons/ci";
 import{CartContext} from '../context/Cart.jsx'
 import { useQuery } from 'react-query';
 import { UserContext } from '../context/User.jsx';
-import logo from '../../../assets/T-store (1).png'
 export default function Navbar() {
   let{userToken,setUserToken,userData,setUserData}=useContext(UserContext);
 
