@@ -40,7 +40,7 @@ export default function Products() {
   const getStars = (avgRate) => {
     let stars = [];
     for(let i=0;i<avgRate;i++){
-       stars.push(<FaStar/>);
+       stars.push(<FaStar color="yellow"/>);
     }
     while(stars.length<5){
       stars.push(<FaRegStar/>);
@@ -92,7 +92,7 @@ export default function Products() {
           </div>
      ))}
         <nav aria-label="Page navigation example">
-          <ul className="pagination">
+          <ul className="pagination ">
             <li className="page-item">
               <button
                 className="page-link"
