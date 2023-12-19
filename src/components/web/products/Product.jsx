@@ -16,6 +16,7 @@ export default function Product() {
     return data.product;
   };
   const { data, isLoading } = useQuery("product", getProduct);
+  console.log(data)
   const addToCart = async (id) => {
     const res = await addToCartContext(id);
   };
@@ -28,7 +29,7 @@ export default function Product() {
         <div className="col-md-8">
           {data.subImages.map((image, index) => (
                 <React.Fragment key={index}>
-                  <img src={image.secure_url}  className="m-5 columns-2 image"/>
+                  <img src={image.secure_url}  className="m-5 columns-2 image img-thumbnail"/>
                 </React.Fragment>
           ))}
         </div>
