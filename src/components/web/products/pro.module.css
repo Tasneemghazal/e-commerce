@@ -2,8 +2,8 @@
     background-color: rgb(233, 207, 255) !important;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    height: 350px;
-    max-height: 350px;
+   height: 400px;
+    max-height: 400px;
 
 }
 .pro h2,p{
@@ -15,5 +15,18 @@
 [disabled]:hover{
 background-color: rgb(73, 73, 82) !important;
 cursor: not-allowed;
+}
+.stars{
+    display: flex;
+    flex-direction: row;
+}
+.details{
+    border-radius: 10px !important;
+    text-decoration: none;
+    padding: 10px;
+    margin-top: 10px;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,148,233,1) 100%);
+    color: #fff;
 }
 
