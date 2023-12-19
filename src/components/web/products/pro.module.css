@@ -28,5 +28,22 @@ cursor: not-allowed;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,148,233,1) 100%);
     color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.details:hover,.create_review_link:hover{
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+    transition-delay: 0.1s;
+}
+.review_img{
+    width: 100px;
+    height: 100px ;
+    margin: auto;
 }
 
+.create_review_link{
+    color: #fff;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,148,233,1) 100%);
+    border-radius: 10px;
+}
