@@ -76,7 +76,7 @@ export default function Products() {
         {pro.products.map((product) => 
         
         (
-          <div key={product.id} className="col-md-4">
+          <div key={product.id} className="col-md-3">
             <div
               className={`${style.pro} pro my-3  py-5  d-flex flex-column justify-content-center align-items-center`}
             >
