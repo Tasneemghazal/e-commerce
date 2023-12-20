@@ -42,15 +42,16 @@ export default function Product() {
             <React.Fragment key={index}>
               <img
                 src={image.secure_url}
-                className="m-5 columns-2 image img-thumbnail"
+                className={`${style.image} img-thumbnail`}
               />
             </React.Fragment>
           ))}
         </div>
         <div className="col-md-4">
           <h2 className="pt-5">{data.name}</h2>
-          <p>{`$ ${data.price}`}</p>
-          <button
+          <p  className={`${style.price} `}><b>Description:</b> {data.description}</p>
+          <p className={`${style.price} `}><b>Price: {`$ ${data.price}`}</b></p>
+          <button 
             className="btn btn-outline-info"
             onClick={() => addToCart(data._id)}
           >

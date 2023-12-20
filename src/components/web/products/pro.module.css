@@ -4,6 +4,10 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
    height: 400px;
     max-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
 }
 .pro h2,p{
@@ -46,4 +50,13 @@ cursor: not-allowed;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,148,233,1) 100%);
     border-radius: 10px;
+}
+.image{
+    width: 200px;
+    height: 200px;
+    margin: 30px 10px;
+}
+.price{
+    color: black !important;
+    text-align: left !important;
 }
