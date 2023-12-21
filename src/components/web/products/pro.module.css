@@ -60,3 +60,28 @@ cursor: not-allowed;
     color: black !important;
     text-align: left !important;
 }
+select{
+    border-radius: 5px;
+    padding: 5px;
+    border: blueviolet solid 1px;
+    margin-bottom: 10px;
+}
+.search{
+    background-color: rgb(248, 240, 255) !important;
+    box-shadow: none;
+    display: inline-block;
+    margin: 0 !important;
+    width: 305px !important;
+}
+
+.submit,.reset{
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,148,233,1) 100%);
+    color: #fff !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: none;
+    padding: 5px 7px;
+}
+.reset{
+    border-radius: 5px;
+}
