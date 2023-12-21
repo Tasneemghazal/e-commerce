@@ -10,7 +10,9 @@ export default function Products() {
   const [isLoading, setIsLoading] = useState(true);
   let [page, setPage] = useState(1);
   let [price,setPrice]=useState("");
-  const getProducts = async (page, sort) => {
+  let[min,setMin]=useState("");
+  let[max,setMax]=useState("");
+  const getProducts = async (page) => {
     try {
       const { data } = await axios.get(
         `https://ecommerce-node4.vercel.app/products?page=${page}`
@@ -50,10 +52,32 @@ export default function Products() {
       setIsLoading(false);
     }
   };
+  const getProductsByMin= async (page,min,max) => {
+    if(min == "" && max != ""){
+      min = 0;
+    }
+    else if(max == "" && min != ""){
+      max = 200;
+    }
+    try {
+      const { data } = await axios.get(
+        `https://ecommerce-node4.vercel.app/products?page=${page}&price[gte]=${min}&price[lte]=${max}`
+      );
+      console.log(data);
+      setpro(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
   const ResetInputs = ()=>{
-    setPrice("")
+    setPrice("");
+    setMax("");
+    setMin ("");
     getProducts(1);
   }
+
   const getPage = async (pageNumber) => {
     setPage(pageNumber);
     setIsLoading(true);
@@ -110,6 +134,11 @@ export default function Products() {
       <form onSubmit={(e)=>{e.preventDefault();getProductsByPrice(page,price)}} className={`${style.search} ms-2`}>
       <input type="text" value={price} onChange={(e)=>{setPrice(e.target.value)}}  className="ms-2 p-1 me-2"/>
       <input type="submit" value="Search" className={`${style.submit}`}/>
+      </form>
+      <form onSubmit={(e)=>{e.preventDefault();getProductsByMin(page,min,max)}} className={`${style.search} ms-2`}>
+      <input type="text" value={min} onChange={(e)=>{setMin(e.target.value)}}  className={`${style.min} ms-2 p-1 me-2`} placeholder="min"/>
+      <input type="text" value={max} onChange={(e)=>{setMax(e.target.value)}}  className={`${style.max} ms-2 p-1 me-2`} placeholder="max"/>
+      <input type="submit" value="Get" className={`${style.submit}`}/>
       </form>
       <button className={`${style.reset}`} onClick={ResetInputs}>Reset</button>
       <div className="row">
