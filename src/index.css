@@ -1,42 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;200;300;400;500;600;700;800&display=swap");
 
-  @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100;200;300;400;500;600;700;800&display=swap');
+body {
+  background-color: rgb(248, 240, 255) !important;
+  font-family: "Playpen Sans", cursive !important;
+}
+input,
+.forgetpassword {
+  border-radius: 5px !important;
+}
+.navbar {
+  background-color: rgb(233, 207, 255) !important;
+}
+form {
+  background-color: rgb(233, 207, 253) !important;
+  border-radius: 5px !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 550px !important;
+  margin: auto;
+}
+.submit,
+.forgetpassword {
+  background-color: rgb(209, 108, 245);
+  border: none;
+  padding: 5px 8px;
+}
+a {
+  display: inline-block;
+}
+h1 {
+  color: blueviolet !important;
+}
 
-body{
-    background-color: rgb(248, 240, 255) !important;
-    font-family: 'Playpen Sans', cursive !important;
-    
+button {
+  color: blueviolet !important;
+  border-color: blueviolet !important;
 }
-input,.forgetpassword{
-    border-radius: 5px !important;
-}
-.navbar{
-    background-color: rgb(233, 207, 255) !important;
-}
-form{
-    background-color: rgb(233, 207, 253) !important;
-    border-radius: 5px !important;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 550px !important;
-margin: auto;}
-.submit,.forgetpassword{
-    background-color: rgb(209, 108, 245) ;
-    border: none;
-    padding: 5px 8px;
-    
-}
-a{
-    display: inline-block;
-}
-h1{
-    color: blueviolet !important;
-}
-
-button{
-    color: blueviolet !important;
-    border-color: blueviolet !important;
-}
-button:hover{
-    background-color:rgb(209, 108, 245)!important;
-    color: white !important;
-    border-color: white !important;
+button:hover {
+  background-color: rgb(209, 108, 245) !important;
+  color: white !important;
+  border-color: white !important;
 }
