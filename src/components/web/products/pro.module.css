@@ -85,3 +85,6 @@ select{
 .reset{
     border-radius: 5px;
 }
+.min,.max{
+    width: 50px;
+}
